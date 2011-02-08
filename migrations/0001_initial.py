@@ -11,8 +11,7 @@ class Migration(SchemaMigration):
         # Adding model 'BroadcastMessage'
         db.create_table('broadcast_broadcastmessage', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('contact', self.gf('django.db.models.fields.related.ForeignKey')(related_name='broadcast_messages', to=orm['rapidsms.Contact'])),
-            ('group', self.gf('django.db.models.fields.CharField')(max_length=30)),
+            ('connection', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['rapidsms.Connection'])),
             ('text', self.gf('django.db.models.fields.TextField')()),
             ('date', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.utcnow)),
             ('logger_message', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['messagelog.Message'], null=True, blank=True)),
@@ -54,9 +53,8 @@ class Migration(SchemaMigration):
     models = {
         'broadcast.broadcastmessage': {
             'Meta': {'object_name': 'BroadcastMessage'},
-            'contact': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'broadcast_messages'", 'to': "orm['rapidsms.Contact']"}),
+            'connection': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['rapidsms.Connection']"}),
             'date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.utcnow'}),
-            'group': ('django.db.models.fields.CharField', [], {'max_length': '30'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'logger_message': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['messagelog.Message']", 'null': 'True', 'blank': 'True'}),
             'recipients': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'related_name': "'broadcast_messages_received'", 'blank': 'True', 'to': "orm['rapidsms.Contact']"}),
