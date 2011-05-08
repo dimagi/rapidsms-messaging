@@ -4,9 +4,9 @@ from django import forms
 from django.forms.models import modelformset_factory
 from django.utils.dates import MONTHS
 
-from afrims.apps.broadcast.models import Broadcast, ForwardingRule
-from afrims.apps.broadcast.validators import validate_keyword
-from afrims.apps.groups.models import Group
+from broadcast.models import Broadcast, ForwardingRule
+from broadcast.validators import validate_keyword
+from groups.models import Group
 
 
 class BroadcastForm(forms.ModelForm):

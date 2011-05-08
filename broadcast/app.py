@@ -10,10 +10,10 @@ from rapidsms.apps.base import AppBase
 from rapidsms.messages import OutgoingMessage
 from rapidsms.contrib.scheduler.models import EventSchedule
 
-from afrims.apps.broadcast.models import Broadcast, BroadcastMessage,\
+from broadcast.models import Broadcast, BroadcastMessage,\
                                          ForwardingRule
-from afrims.apps.broadcast.views import usage_report_context
-from afrims.apps.groups import models as groups
+from broadcast.views import usage_report_context
+from groups import models as groups
 
 
 # In RapidSMS, message translation is done in OutgoingMessage, so no need
@@ -27,7 +27,7 @@ def scheduler_callback(router):
     Basic rapidsms.contrib.scheduler.models.EventSchedule callback
     function that runs BroadcastApp.cronjob()
     """
-    app = router.get_app("afrims.apps.broadcast")
+    app = router.get_app("broadcast")
     app.cronjob()
 
 
@@ -58,7 +58,7 @@ class BroadcastApp(AppBase):
 
     cron_schedule = {'minutes': '*'}
     cron_name = 'broadcast-cron-job'
-    cron_callback = 'afrims.apps.broadcast.app.scheduler_callback'
+    cron_callback = 'broadcast.app.scheduler_callback'
     
     not_registered = _('Sorry, your mobile number is not registered in the '
                        'required group for this keyword.')
@@ -79,7 +79,7 @@ class BroadcastApp(AppBase):
         schedule.save()
         name = 'broadcast-monthly-email'
         info = {
-            'callback': 'afrims.apps.broadcast.app.usage_email_callback',
+            'callback': 'broadcast.app.usage_email_callback',
             'days_of_month': [1],
             'hours': [12],
             'minutes': [0],

@@ -1,5 +1,5 @@
 /* broadcast.js
- * Javascript form functionality for afrims.apps.broadcast RapidSMS app
+ * Javascript form functionality for broadcast RapidSMS app
  */
 $(document).ready(function() {
     jQuery.ajaxSettings.traditional = true;

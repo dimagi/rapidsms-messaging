@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from afrims.apps.broadcast import views
+from broadcast import views
 
 
 urlpatterns = patterns('',

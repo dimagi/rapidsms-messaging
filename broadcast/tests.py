@@ -14,10 +14,10 @@ from rapidsms.messages.outgoing import OutgoingMessage
 from rapidsms.messages.incoming import IncomingMessage
 
 from afrims.tests.testcases import CreateDataTest, FlushTestScript
-from afrims.apps.broadcast.models import Broadcast, DateAttribute,\
+from broadcast.models import Broadcast, DateAttribute,\
                                          ForwardingRule
-from afrims.apps.broadcast.app import BroadcastApp, scheduler_callback
-from afrims.apps.broadcast.forms import BroadcastForm
+from broadcast.app import BroadcastApp, scheduler_callback
+from broadcast.forms import BroadcastForm
 
 
 class BroadcastCreateDataTest(CreateDataTest):

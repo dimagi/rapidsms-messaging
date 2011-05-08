@@ -9,7 +9,7 @@ from django.db import models
 from rapidsms.models import Contact, Connection
 from rapidsms.contrib.messagelog.models import Message
 
-from afrims.apps.groups.models import Group
+from groups.models import Group
 
 
 logger = logging.getLogger('broadcast.models')
