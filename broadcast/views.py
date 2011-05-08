@@ -17,7 +17,6 @@ from rapidsms.contrib.messagelog.models import Message
 
 from broadcast.forms import BroadcastForm, ForwardingRuleForm, ReportForm, RecentMessageForm
 from broadcast.models import Broadcast, BroadcastMessage, ForwardingRule
-from afrims.apps.reminders.models import SentNotification
 
 
 @login_required
@@ -173,13 +172,9 @@ def usage_report_context(start_date, end_date):
         data[rule.label] = label_data   
         rule_data[rule.rule_type] = data
 
-    # Get patient reminder data
-    confirmed_count = SentNotification.objects.confirmed_for_range(
-        start_date, end_date).count()
-    unconfirmed_count = SentNotification.objects.unconfirmed_for_range(
-        start_date, end_date).count()
-    total_reminders = confirmed_count + unconfirmed_count
-
+    # TODO: remove these
+    confirmed_count = unconfirmed_count = total_reminders = 0
+    
     # Get total incoming/outgoing data
     incoming_count = Message.objects.filter(
         date__range=(start_date, end_date),
